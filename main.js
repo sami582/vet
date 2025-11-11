@@ -11,6 +11,13 @@ class PawPlanApp {
         this.init();
     }
 
+    // Sanitize input to prevent XSS
+    sanitize(text) {
+        const element = document.createElement('div');
+        element.innerText = text;
+        return element.innerHTML;
+    }
+
     init() {
         this.loadDemoData();
         this.setupEventListeners();
@@ -128,7 +135,7 @@ class PawPlanApp {
             previewCard.innerHTML = `
                 <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-blue-500">
                     <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold text-gray-800">${name}</h3>
+                        <h3 class="text-xl font-bold text-gray-800">${this.sanitize(name)}</h3>
                         <span class="text-2xl font-bold text-blue-600">$${price}/month</span>
                     </div>
                     <div class="space-y-2">
@@ -137,7 +144,7 @@ class PawPlanApp {
                                 <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                                 </svg>
-                                ${service}
+                                ${this.sanitize(service)}
                             </div>
                         `).join('')}
                     </div>
@@ -194,17 +201,17 @@ class PawPlanApp {
         container.innerHTML = this.vetPlans.map(plan => `
             <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
                 <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-xl font-bold text-gray-800">${plan.name}</h3>
+                    <h3 class="text-xl font-bold text-gray-800">${this.sanitize(plan.name)}</h3>
                     <span class="text-2xl font-bold text-blue-600">$${plan.price}/month</span>
                 </div>
-                <p class="text-gray-600 mb-4">${plan.description}</p>
+                <p class="text-gray-600 mb-4">${this.sanitize(plan.description)}</p>
                 <div class="space-y-2 mb-4">
                     ${plan.services.map(service => `
                         <div class="flex items-center text-sm text-gray-600">
                             <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
-                            ${service}
+                            ${this.sanitize(service)}
                         </div>
                     `).join('')}
                 </div>
