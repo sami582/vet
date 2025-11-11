@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Owner Plans - PawPlan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .heading-font { font-family: 'Poppins', sans-serif; }
+        .demo-indicator { display: none; }
+        .hero-bg {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.2"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><circle cx="150" cy="150" r="80" fill="url(%23a)"/><circle cx="850" cy="250" r="120" fill="url(%23a)"/><circle cx="300" cy="750" r="100" fill="url(%23a)"/></svg>') no-repeat center center;
+            background-size: cover;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body>
+    <!-- Demo Mode Indicator -->
+    <div id="demo-indicator" class="demo-indicator fixed top-0 left-0 right-0 bg-orange-500 text-white text-center py-2 z-50">
+        <i class="fas fa-flask mr-2"></i>
+        Demo Mode Active - <button id="demo-toggle" class="underline hover:no-underline">Click to toggle</button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm fixed w-full top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="heading-font text-2xl font-bold text-blue-600">PawPlan</h1>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        <a href="#plans" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Browse Plans</a>
+                        <a href="client-login.html" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Login</a>
+                        <a href="client-signup.html" class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg pt-16 pb-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+            <div class="text-center">
+                <h1 class="heading-font text-5xl md:text-6xl font-bold text-white mb-6">
+                    Affordable Pet Care
+                    <span class="block text-yellow-300">Made Simple</span>
+                </h1>
+                <p class="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+                    Find the perfect membership plan for your furry family members. 
+                    Get comprehensive veterinary care at predictable monthly costs.
+                </p>
+                <button onclick="window.location.href='client-signup.html'" class="bg-yellow-400 text-gray-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-yellow-300 transition-colors">
+                    <i class="fas fa-heart mr-2"></i>
+                    Find My Perfect Plan
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Plans Section -->
+    <section id="plans" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-4xl font-bold text-gray-900 mb-4">Available Membership Plans</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Choose from carefully curated veterinary care plans designed to keep your pets healthy and happy
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Essential Care Plan -->
+                <div class="bg-white rounded-2xl shadow-lg border-2 border-gray-200 hover:border-blue-300 transition-all p-8 flex flex-col">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-shield-alt text-2xl text-blue-600"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Essential Care</h3>
+                        <p class="text-gray-600 mb-4">Perfect for healthy pets needing basic preventive care</p>
+                        <div class="text-4xl font-bold text-blue-600 mb-2">$49<span class="text-lg font-normal text-gray-500">/month</span></div>
+                    </div>
+                    
+                    <div class="space-y-3 mb-8 flex-grow">
+                        <div class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Annual Comprehensive Exam</span>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Core Vaccinations</span>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Flea & Tick Prevention</span>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Basic Blood Work</span>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>2 Free Consultations/Year</span>
+                        </div>
+                    </div>
+                    
+                    <button onclick="window.location.href='client-signup.html?plan=essential'" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                        Choose Essential Care
+                    </button>
+                </div>
+
+                <!-- Premium Wellness Plan -->
+                <div class="bg-white rounded-2xl shadow-xl border-4 border-orange-300 hover:border-orange-400 transition-all p-8 flex flex-col relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-orange-500 text-white px-4 py-1 rounded-full text-sm font-bold">MOST POPULAR</span>
+                    </div>
+                    
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-star text-2xl text-orange-600"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Premium Wellness</h3>
+                        <p class="text-gray-600 mb-4">Comprehensive care for optimal pet health and longevity</p>
+                        <div class="text-4xl font-bold text-orange-600 mb-2">$89<span class="text-lg font-normal text-gray-500">/month</span></div>
+                    </div>
+                    
+                    <div class="space-y-3 mb-8 flex-grow">
+                        <div class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Everything in Essential Care</span>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Professional Dental Cleaning</span>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Advanced Diagnostic Tests</span>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Unlimited Consultations</span>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Emergency Visit Discount (20%)</span>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Nutrition Consultation</span>
+                        </div>
+                    </div>
+                    
+                    <button onclick="window.location.href='client-signup.html?plan=premium'" class="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors">
+                        Choose Premium Wellness
+                    </button>
+                </div>
+
+                <!-- Elite Care Plan -->
+                <div class="bg-white rounded-2xl shadow-lg border-2 border-gray-200 hover:border-purple-300 transition-all p-8 flex flex-col">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-crown text-2xl text-purple-600"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Elite Care</h3>
+                        <p class="text-gray-600 mb-4">Ultimate protection and peace of mind for your beloved pets</p>
+                        <div class="text-4xl font-bold text-purple-600 mb-2">$149<span class="text-lg font-normal text-gray-500">/month</span></div>
+                    </div>
+                    
+                    <div class="space-y-3 mb-8 flex-grow">
+                        <div class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Everything in Premium Wellness</span>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Specialist Consultations</span>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Advanced Imaging (X-rays, Ultrasound)</span>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Surgical Procedures (Up to $2000/year)</span>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>24/7 Telehealth Access</span>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Prescription Medications</span>
+                        </div>
+                    </div>
+                    
+                    <button onclick="window.location.href='client-signup.html?plan=elite'" class="w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors">
+                        Choose Elite Care
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-4xl font-bold text-gray-900 mb-4">Why Pet Owners Love PawPlan</h2>
+                <p class="text-xl text-gray-600">Join thousands of happy pet parents who've made the switch</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-dollar-sign text-3xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Save Money</h3>
+                    <p class="text-gray-600">Average savings of $300-800 per year compared to traditional pay-per-visit care.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-calendar-check text-3xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Regular Care</h3>
+                    <p class="text-gray-600">No more skipping appointments. Regular checkups keep your pet healthier longer.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-brain text-3xl text-orange-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Peace of Mind</h3>
+                    <p class="text-gray-600">Know exactly what's covered and when you can access care without financial stress.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-heart text-3xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Better Relationships</h3>
+                    <p class="text-gray-600">Build stronger bonds with your veterinary team through consistent, comprehensive care.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-blue-600 to-purple-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="heading-font text-3xl font-bold text-white mb-4">Ready to Give Your Pet the Best Care?</h2>
+            <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+                Join over 10,000 pet owners who trust PawPlan for comprehensive, affordable veterinary care.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="window.location.href='client-signup.html'" class="bg-yellow-400 text-gray-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-yellow-300 transition-colors">
+                    <i class="fas fa-heart mr-2"></i>
+                    Start Your Pet's Journey
+                </button>
+                <button onclick="window.location.href='client-login.html'" class="bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/30 transition-colors border border-white/30">
+                    <i class="fas fa-sign-in-alt mr-2"></i>
+                    Already a Member?
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center text-gray-600">
+                <p>&copy; 2024 PawPlan. All rights reserved. | <a href="privacy.html" class="hover:text-blue-600">Privacy Policy</a> | <a href="terms.html" class="hover:text-blue-600">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

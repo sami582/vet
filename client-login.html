@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - PawPlan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .heading-font { font-family: 'Poppins', sans-serif; }
+        .demo-indicator { display: none; }
+        .login-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .login-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="400" cy="700" r="120" fill="url(%23a)"/></svg>') no-repeat center center;
+            background-size: cover;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Demo Mode Indicator -->
+    <div id="demo-indicator" class="demo-indicator fixed top-0 left-0 right-0 bg-orange-500 text-white text-center py-2 z-50">
+        <i class="fas fa-flask mr-2"></i>
+        Demo Mode Active - <button id="demo-toggle" class="underline hover:no-underline">Click to toggle</button>
+    </div>
+
+    <div class="login-bg min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative">
+        <div class="max-w-md w-full space-y-8 bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-8">
+            <div class="text-center">
+                <h1 class="heading-font text-4xl font-bold text-gray-900 mb-2">Welcome Back</h1>
+                <p class="text-gray-600 mb-8">Sign in to your PawPlan account</p>
+            </div>
+
+            <form id="login-form" class="space-y-6">
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-envelope text-gray-400"></i>
+                        </div>
+                        <input type="email" id="email" name="email" required class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="john.smith@email.com">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-lock text-gray-400"></i>
+                        </div>
+                        <input type="password" id="password" name="password" required class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="••••••••">
+                        <button type="button" class="absolute inset-y-0 right-0 pr-3 flex items-center" onclick="togglePassword()">
+                            <i class="fas fa-eye text-gray-400" id="eye-icon"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <label class="flex items-center">
+                        <input type="checkbox" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                        <span class="ml-2 text-sm text-gray-600">Remember me</span>
+                    </label>
+                    <a href="#" onclick="alert('Password reset feature coming soon!')" class="text-sm text-blue-600 hover:text-blue-500">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+                    <i class="fas fa-sign-in-alt mr-2"></i>
+                    Sign In
+                </button>
+            </form>
+
+            <div class="text-center">
+                <p class="text-gray-600 mb-4">Don't have an account?</p>
+                <button onclick="window.location.href='client-signup.html'" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors font-semibold">
+                    <i class="fas fa-user-plus mr-2"></i>
+                    Create Account
+                </button>
+            </div>
+
+            <!-- Demo Login Options -->
+            <div class="border-t pt-6">
+                <h3 class="text-center text-sm font-medium text-gray-700 mb-4">Demo Login Options</h3>
+                <div class="space-y-2">
+                    <button onclick="demoLogin('client')" class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition-colors text-sm">
+                        <i class="fas fa-user mr-2"></i>
+                        Login as Client (Demo)
+                    </button>
+                    <button onclick="demoLogin('vet')" class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition-colors text-sm">
+                        <i class="fas fa-user-md mr-2"></i>
+                        Login as Veterinarian (Demo)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const eyeIcon = document.getElementById('eye-icon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            }
+        }
+
+        function demoLogin(userType) {
+            // Enable demo mode
+            localStorage.setItem('pawplan_demo_mode', 'true');
+            
+            // Show loading message
+            const button = event.target;
+            const originalText = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Logging in...';
+            button.disabled = true;
+            
+            // Simulate login delay
+            setTimeout(() => {
+                if (userType === 'client') {
+                    window.location.href = 'client-dashboard.html';
+                } else if (userType === 'vet') {
+                    window.location.href = 'vet-dashboard.html';
+                }
+            }, 1500);
+        }
+
+        // Handle form submission
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Simple validation
+            if (!email || !password) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // Simulate login (in real app, this would make API call)
+            alert('Login successful! Redirecting to dashboard...');
+            
+            // For demo purposes, redirect to client dashboard
+            setTimeout(() => {
+                window.location.href = 'client-dashboard.html';
+            }, 1000);
+        });
+
+        // Auto-fill demo credentials for testing
+        document.addEventListener('DOMContentLoaded', function() {
+            // You can remove this in production - just for demo convenience
+            console.log('Demo login page loaded. Use demo buttons for quick access.');
+        });
+    </script>
+
+    <script src="main.js"></script>
+</body>
+</html>

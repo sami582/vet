@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Dashboard - PawPlan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .heading-font { font-family: 'Poppins', sans-serif; }
+        .demo-indicator { display: none; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Demo Mode Indicator -->
+    <div id="demo-indicator" class="demo-indicator fixed top-0 left-0 right-0 bg-orange-500 text-white text-center py-2 z-50">
+        <i class="fas fa-flask mr-2"></i>
+        Demo Mode Active - <button id="demo-toggle" class="underline hover:no-underline">Click to toggle</button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="heading-font text-2xl font-bold text-blue-600">PawPlan</h1>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="client-dashboard.html" class="text-blue-600 font-medium">Dashboard</a>
+                        <a href="#" onclick="alert('Appointments feature coming soon!')" class="text-gray-600 hover:text-gray-900">Appointments</a>
+                        <a href="#" onclick="alert('Pets feature coming soon!')" class="text-gray-600 hover:text-gray-900">My Pets</a>
+                        <a href="index.html" class="text-gray-600 hover:text-gray-900">Home</a>
+                        <div class="relative">
+                            <button class="flex items-center text-gray-600 hover:text-gray-900">
+                                <img class="w-8 h-8 rounded-full mr-2" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTYiIGZpbGw9IiMzQjgyRjYiLz4KPHN2ZyB4PSI4IiB5PSI4IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPgo8cGF0aCBkPSJNMTIgMTJjMS42NTYgMCAzLTEuMzQ0IDMtM3MtMS4zNDQtMy0zLTMtMyAxLjM0NC0zIDMgMS4zNDQgMyAzIDN6bTAtNGMuNTUyIDAgMSAuNDQ4IDEgMXMtLjQ0OCAxLTEgMS0xLS40NDgtMS0xIC40NDgtMSAxLTF6bTcgMTJ2LTFjMC0yLjIxNC0xLjc4Ni00LTQtNEg5Yy0yLjIxNCAwLTQgMS43ODYtNCA0djFoMTh6bS0yLTRjMC0xLjEwNS0uODk1LTItMi0ySDljLTEuMTA1IDAtMiAuODk1LTIgMnYxaDE0di0xeiIvPgo8L3N2Zz4KPC9zdmc+" alt="Profile">
+                                Sarah Johnson
+                                <i class="fas fa-chevron-down ml-2 text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Welcome Header -->
+        <div class="mb-8">
+            <h1 class="heading-font text-3xl font-bold text-gray-900 mb-2">Welcome back, Sarah!</h1>
+            <p class="text-gray-600">Here's what's happening with your pets' care today</p>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-blue-100 text-blue-600">
+                        <i class="fas fa-calendar-check text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600">Next Appointment</p>
+                        <p class="text-lg font-bold text-gray-900">Dec 15</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-green-100 text-green-600">
+                        <i class="fas fa-heart text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600">Active Pets</p>
+                        <p class="text-lg font-bold text-gray-900">2</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-orange-100 text-orange-600">
+                        <i class="fas fa-shield-alt text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600">Your Plan</p>
+                        <p class="text-lg font-bold text-gray-900">Premium</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-purple-100 text-purple-600">
+                        <i class="fas fa-dollar-sign text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600">Next Payment</p>
+                        <p class="text-lg font-bold text-gray-900">Dec 1</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Dashboard Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column - Pet Info & Client Details -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- Client Information -->
+                <div id="client-info">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+
+                <!-- Pet Information Cards -->
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Your Pets</h2>
+                    <div id="pet-info" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6">Recent Activity</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-center p-4 bg-gray-50 rounded-lg">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-calendar-check text-blue-600"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-medium text-gray-900">Annual checkup scheduled for Max</p>
+                                <p class="text-sm text-gray-600">December 15, 2024 at 2:00 PM</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-4 bg-gray-50 rounded-lg">
+                            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-prescription-bottle text-green-600"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-medium text-gray-900">Flea prevention refilled for Luna</p>
+                                <p class="text-sm text-gray-600">November 28, 2024</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-4 bg-gray-50 rounded-lg">
+                            <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-file-medical text-orange-600"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-medium text-gray-900">Vaccination records updated</p>
+                                <p class="text-sm text-gray-600">November 20, 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Membership & Quick Actions -->
+            <div class="space-y-8">
+                <!-- Membership Details -->
+                <div id="membership-details">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6">Quick Actions</h2>
+                    <div class="space-y-3">
+                        <button onclick="alert('Appointment booking coming soon!')" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                            <i class="fas fa-calendar-plus mr-2"></i>
+                            Book Appointment
+                        </button>
+                        
+                        <button onclick="alert('Prescription refill coming soon!')" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors font-medium">
+                            <i class="fas fa-prescription-bottle mr-2"></i>
+                            Refill Prescription
+                        </button>
+                        
+                        <button onclick="alert('Telehealth coming soon!')" class="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition-colors font-medium">
+                            <i class="fas fa-video mr-2"></i>
+                            Video Consultation
+                        </button>
+                        
+                        <button onclick="alert('Emergency line: 1-800-VET-HELP')" class="w-full bg-red-600 text-white py-3 rounded-lg hover:bg-red-700 transition-colors font-medium">
+                            <i class="fas fa-phone mr-2"></i>
+                            Emergency Contact
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Health Reminders -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6">Health Reminders</h2>
+                    <div class="space-y-3">
+                        <div class="flex items-center p-3 bg-yellow-50 rounded-lg border-l-4 border-yellow-400">
+                            <i class="fas fa-exclamation-triangle text-yellow-600 mr-3"></i>
+                            <div>
+                                <p class="font-medium text-gray-900">Max's dental cleaning due</p>
+                                <p class="text-sm text-gray-600">Scheduled for January 2025</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-3 bg-blue-50 rounded-lg border-l-4 border-blue-400">
+                            <i class="fas fa-syringe text-blue-600 mr-3"></i>
+                            <div>
+                                <p class="font-medium text-gray-900">Luna's annual vaccines</p>
+                                <p class="text-sm text-gray-600">Due in February 2025</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-3 bg-green-50 rounded-lg border-l-4 border-green-400">
+                            <i class="fas fa-check-circle text-green-600 mr-3"></i>
+                            <div>
+                                <p class="font-medium text-gray-900">Both pets up to date</p>
+                                <p class="text-sm text-gray-600">Next checkup in 6 months</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6">Your Veterinary Team</h2>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-user-md text-2xl text-blue-600"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900">Dr. Michael Smith</h3>
+                        <p class="text-gray-600 mb-2">Happy Paws Veterinary Clinic</p>
+                        <p class="text-sm text-gray-500 mb-4">Your trusted veterinarian since 2024</p>
+                        
+                        <div class="space-y-2 text-sm">
+                            <div class="flex items-center justify-center">
+                                <i class="fas fa-phone text-blue-600 mr-2"></i>
+                                <span class="text-gray-600">(555) 123-4567</span>
+                            </div>
+                            <div class="flex items-center justify-center">
+                                <i class="fas fa-envelope text-blue-600 mr-2"></i>
+                                <span class="text-gray-600">contact@happypaws.com</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center text-gray-600">
+                <p>&copy; 2024 PawPlan. All rights reserved. | <a href="privacy.html" class="hover:text-blue-600">Privacy Policy</a> | <a href="terms.html" class="hover:text-blue-600">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

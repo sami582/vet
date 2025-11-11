@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vet Dashboard - PawPlan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .heading-font { font-family: 'Poppins', sans-serif; }
+        .demo-indicator { display: none; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Demo Mode Indicator -->
+    <div id="demo-indicator" class="demo-indicator fixed top-0 left-0 right-0 bg-orange-500 text-white text-center py-2 z-50">
+        <i class="fas fa-flask mr-2"></i>
+        Demo Mode Active - <button id="demo-toggle" class="underline hover:no-underline">Click to toggle</button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="heading-font text-2xl font-bold text-blue-600">PawPlan</h1>
+                    </div>
+                    <div class="hidden md:block ml-10">
+                        <div class="flex items-baseline space-x-4">
+                            <a href="vet-dashboard.html" class="text-blue-600 font-medium">Dashboard</a>
+                            <a href="index.html" class="text-gray-600 hover:text-gray-900">Home</a>
+                            <a href="client-landing.html" class="text-gray-600 hover:text-gray-900">Client Portal</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                        <i class="fas fa-user-md mr-2"></i>
+                        Dr. Smith
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="heading-font text-3xl font-bold text-gray-900 mb-2">Veterinarian Dashboard</h1>
+            <p class="text-gray-600">Manage your membership plans and track client subscriptions</p>
+        </div>
+
+        <!-- Metrics Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-blue-100 text-blue-600">
+                        <i class="fas fa-users text-2xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600">Total Clients</p>
+                        <p id="total-clients" class="text-2xl font-bold text-gray-900">20</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-green-100 text-green-600">
+                        <i class="fas fa-dollar-sign text-2xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600">Monthly Revenue</p>
+                        <p id="total-revenue" class="text-2xl font-bold text-gray-900">$1,300</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-orange-100 text-orange-600">
+                        <i class="fas fa-chart-line text-2xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600">Active Plans</p>
+                        <p class="text-2xl font-bold text-gray-900">2</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Plan Builder Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <!-- Plan Creation Form -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="heading-font text-2xl font-bold text-gray-900 mb-6">Create New Membership Plan</h2>
+                <form id="plan-builder-form" class="space-y-6">
+                    <div>
+                        <label for="plan-name" class="block text-sm font-medium text-gray-700 mb-2">Plan Name</label>
+                        <input type="text" id="plan-name" name="plan-name" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="e.g., Essential Care Plan">
+                    </div>
+                    
+                    <div>
+                        <label for="plan-price" class="block text-sm font-medium text-gray-700 mb-2">Monthly Price ($)</label>
+                        <input type="number" id="plan-price" name="plan-price" min="1" max="500" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="49">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Included Services</label>
+                        <div class="space-y-3">
+                            <label class="flex items-center">
+                                <input type="checkbox" name="services" value="Annual Exam" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                <span class="ml-3 text-gray-700">Annual Exam</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="services" value="Vaccinations" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                <span class="ml-3 text-gray-700">Vaccinations</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="services" value="Dental Cleaning" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                <span class="ml-3 text-gray-700">Dental Cleaning</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="services" value="Blood Work" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                <span class="ml-3 text-gray-700">Blood Work</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="services" value="Flea/Tick Prevention" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                <span class="ml-3 text-gray-700">Flea/Tick Prevention</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="services" value="Unlimited Consultations" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                <span class="ml-3 text-gray-700">Unlimited Consultations</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="services" value="Emergency Visits" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                <span class="ml-3 text-gray-700">Emergency Visits</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button type="button" onclick="app.createVetPlan()" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                        <i class="fas fa-plus mr-2"></i>
+                        Create Plan
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Live Preview -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="heading-font text-2xl font-bold text-gray-900 mb-6">Live Preview</h2>
+                <div id="plan-preview" class="min-h-64">
+                    <p class="text-gray-500 text-center py-12">Plan preview will appear here</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Your Plans Section -->
+        <div class="mb-8">
+            <h2 class="heading-font text-2xl font-bold text-gray-900 mb-6">Your Membership Plans</h2>
+            <div id="vet-plans" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Plans will be rendered here -->
+            </div>
+        </div>
+
+        <!-- Client Management Section -->
+        <div>
+            <h2 class="heading-font text-2xl font-bold text-gray-900 mb-6">Client Management</h2>
+            <div id="client-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Clients will be rendered here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center text-gray-600">
+                <p>&copy; 2024 PawPlan. All rights reserved. | <a href="privacy.html" class="hover:text-blue-600">Privacy Policy</a> | <a href="terms.html" class="hover:text-blue-600">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawPlan - Veterinary Membership Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .heading-font { font-family: 'Poppins', sans-serif; }
+        .hero-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="400" cy="700" r="120" fill="url(%23a)"/></svg>') no-repeat center center;
+            background-size: cover;
+            opacity: 0.3;
+        }
+        .demo-indicator { display: none; }
+    </style>
+</head>
+<body>
+    <!-- Demo Mode Indicator -->
+    <div id="demo-indicator" class="demo-indicator fixed top-0 left-0 right-0 bg-orange-500 text-white text-center py-2 z-50">
+        <i class="fas fa-flask mr-2"></i>
+        Demo Mode Active - <button id="demo-toggle" class="underline hover:no-underline">Click to toggle</button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm fixed w-full top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="heading-font text-2xl font-bold text-blue-600">PawPlan</h1>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#features" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Features</a>
+                        <a href="#how-it-works" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">How It Works</a>
+                        <a href="client-landing.html" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Pet Owners</a>
+                        <a href="vet-dashboard.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">Veterinarians</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg pt-16 pb-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+            <div class="text-center">
+                <h1 class="heading-font text-5xl md:text-6xl font-bold text-white mb-6">
+                    Modern Veterinary Care
+                    <span class="block text-orange-300">Made Simple</span>
+                </h1>
+                <p class="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+                    Join the future of pet healthcare with membership-based veterinary services. 
+                    Affordable, predictable, and comprehensive care for your beloved pets.
+                </p>
+                
+                <!-- Dual Entry Buttons -->
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-user-md text-4xl text-white mb-3"></i>
+                            <h3 class="text-xl font-bold text-white mb-2">For Veterinarians</h3>
+                            <p class="text-white/80 text-sm mb-4">Create membership plans and manage your practice</p>
+                        </div>
+                        <button onclick="window.location.href='vet-dashboard.html'" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                            Vet Dashboard
+                        </button>
+                    </div>
+                    
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-heart text-4xl text-orange-300 mb-3"></i>
+                            <h3 class="text-xl font-bold text-white mb-2">For Pet Owners</h3>
+                            <p class="text-white/80 text-sm mb-4">Find the perfect care plan for your pets</p>
+                        </div>
+                        <button onclick="window.location.href='client-landing.html'" class="bg-orange-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors">
+                            Find Plans
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-4xl font-bold text-gray-900 mb-4">Why Choose PawPlan?</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    We make veterinary care accessible, affordable, and stress-free for both pet owners and veterinarians.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="text-center p-6 rounded-lg hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Predictable Costs</h3>
+                    <p class="text-gray-600">No more surprise vet bills. Know exactly what you're paying each month with comprehensive coverage.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="text-center p-6 rounded-lg hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-stethoscope text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Comprehensive Care</h3>
+                    <p class="text-gray-600">From routine checkups to emergency care, our plans cover all aspects of your pet's health needs.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="text-center p-6 rounded-lg hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-2xl text-orange-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Trusted Network</h3>
+                    <p class="text-gray-600">Connect with verified, compassionate veterinarians in your area who prioritize your pet's wellbeing.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="text-center p-6 rounded-lg hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-mobile-alt text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Easy Management</h3>
+                    <p class="text-gray-600">Manage appointments, track your pet's health, and handle billing all from one convenient dashboard.</p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="text-center p-6 rounded-lg hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-heart text-2xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Better Health Outcomes</h3>
+                    <p class="text-gray-600">Regular preventive care leads to healthier, happier pets and earlier detection of potential issues.</p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="text-center p-6 rounded-lg hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-chart-line text-2xl text-yellow-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Practice Growth</h3>
+                    <p class="text-gray-600">For veterinarians: Build stable revenue streams and stronger client relationships with membership models.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-4xl font-bold text-gray-900 mb-4">How It Works</h2>
+                <p class="text-xl text-gray-600">Getting started with PawPlan is simple and straightforward</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- For Pet Owners -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-heart text-3xl text-orange-500 mr-4"></i>
+                        <h3 class="heading-font text-2xl font-bold text-gray-900">For Pet Owners</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <span class="text-blue-600 font-bold text-sm">1</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Browse Available Plans</h4>
+                                <p class="text-gray-600">Explore membership plans from local veterinarians and choose the best fit for your pet's needs.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <span class="text-blue-600 font-bold text-sm">2</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Sign Up Online</h4>
+                                <p class="text-gray-600">Complete the simple registration process and add your pet's information.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <span class="text-blue-600 font-bold text-sm">3</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Start Enjoying Benefits</h4>
+                                <p class="text-gray-600">Schedule appointments and access included services immediately after enrollment.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="window.location.href='client-landing.html'" class="w-full mt-6 bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors">
+                        Find Plans for My Pet
+                    </button>
+                </div>
+                
+                <!-- For Veterinarians -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-user-md text-3xl text-blue-500 mr-4"></i>
+                        <h3 class="heading-font text-2xl font-bold text-gray-900">For Veterinarians</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <span class="text-green-600 font-bold text-sm">1</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Create Your Plans</h4>
+                                <p class="text-gray-600">Design membership packages with services and pricing that work for your practice.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <span class="text-green-600 font-bold text-sm">2</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Share with Clients</h4>
+                                <p class="text-gray-600">Generate shareable links and promote your membership plans to existing and new clients.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <span class="text-green-600 font-bold text-sm">3</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Manage & Grow</h4>
+                                <p class="text-gray-600">Track subscriptions, manage clients, and watch your recurring revenue grow.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="window.location.href='vet-dashboard.html'" class="w-full mt-6 bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                        Start Building Plans
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-blue-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="heading-font text-3xl font-bold text-white mb-4">Ready to Transform Pet Healthcare?</h2>
+            <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+                Join thousands of pet owners and veterinarians who are already experiencing the benefits of membership-based care.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="window.location.href='client-landing.html'" class="bg-orange-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors">
+                    Find Plans for My Pet
+                </button>
+                <button onclick="window.location.href='vet-dashboard.html'" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                    Create Vet Account
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center text-gray-600">
+                <p>&copy; 2024 PawPlan. All rights reserved. | <a href="privacy.html" class="hover:text-blue-600">Privacy Policy</a> | <a href="terms.html" class="hover:text-blue-600">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

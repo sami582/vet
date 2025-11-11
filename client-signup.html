@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - PawPlan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .heading-font { font-family: 'Poppins', sans-serif; }
+        .demo-indicator { display: none; }
+        .step { display: none; }
+        .step.active { display: block; }
+        .progress-bar { transition: width 0.3s ease; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Demo Mode Indicator -->
+    <div id="demo-indicator" class="demo-indicator fixed top-0 left-0 right-0 bg-orange-500 text-white text-center py-2 z-50">
+        <i class="fas fa-flask mr-2"></i>
+        Demo Mode Active - <button id="demo-toggle" class="underline hover:no-underline">Click to toggle</button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="heading-font text-2xl font-bold text-blue-600">PawPlan</h1>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        <a href="client-landing.html" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Browse Plans</a>
+                        <a href="client-login.html" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="bg-white border-b">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex items-center justify-between mb-2">
+                <span class="text-sm font-medium text-gray-600">Step <span id="current-step">1</span> of 3</span>
+                <span class="text-sm font-medium text-gray-600"><span id="progress-percent">33</span>% Complete</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2">
+                <div id="progress-bar" class="progress-bar bg-blue-600 h-2 rounded-full" style="width: 33%"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white rounded-lg shadow-lg p-8">
+            <div class="text-center mb-8">
+                <h1 class="heading-font text-3xl font-bold text-gray-900 mb-2">Create Your Account</h1>
+                <p class="text-gray-600">Join PawPlan and give your pet the care they deserve</p>
+            </div>
+
+            <form id="signup-form" class="space-y-6">
+                <!-- Step 1: Account Information -->
+                <div id="step-1" class="step active">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6">Account Information</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="John">
+                        </div>
+                        <div>
+                            <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Smith">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                        <input type="email" id="email" name="email" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="john.smith@email.com">
+                    </div>
+                    
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="(555) 123-4567">
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Password *</label>
+                            <input type="password" id="password" name="password" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="••••••••">
+                        </div>
+                        <div>
+                            <label for="confirmPassword" class="block text-sm font-medium text-gray-700 mb-2">Confirm Password *</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="••••••••">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Pet Information -->
+                <div id="step-2" class="step">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6">Tell Us About Your Pet</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="petName" class="block text-sm font-medium text-gray-700 mb-2">Pet's Name *</label>
+                            <input type="text" id="petName" name="petName" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Buddy">
+                        </div>
+                        <div>
+                            <label for="petType" class="block text-sm font-medium text-gray-700 mb-2">Pet Type *</label>
+                            <select id="petType" name="petType" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Select Pet Type</option>
+                                <option value="dog">Dog</option>
+                                <option value="cat">Cat</option>
+                                <option value="rabbit">Rabbit</option>
+                                <option value="bird">Bird</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <label for="petAge" class="block text-sm font-medium text-gray-700 mb-2">Age *</label>
+                            <input type="number" id="petAge" name="petAge" required min="0" max="30" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="3">
+                        </div>
+                        <div>
+                            <label for="petAgeUnit" class="block text-sm font-medium text-gray-700 mb-2">Age Unit *</label>
+                            <select id="petAgeUnit" name="petAgeUnit" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="years">Years</option>
+                                <option value="months">Months</option>
+                                <option value="weeks">Weeks</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="petWeight" class="block text-sm font-medium text-gray-700 mb-2">Weight (lbs)</label>
+                            <input type="number" id="petWeight" name="petWeight" min="1" max="300" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="25">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="petBreed" class="block text-sm font-medium text-gray-700 mb-2">Breed</label>
+                        <input type="text" id="petBreed" name="petBreed" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Golden Retriever">
+                    </div>
+                    
+                    <div>
+                        <label for="specialNeeds" class="block text-sm font-medium text-gray-700 mb-2">Special Needs or Medical Conditions</label>
+                        <textarea id="specialNeeds" name="specialNeeds" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Any allergies, medications, or special care requirements..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Step 3: Plan Selection -->
+                <div id="step-3" class="step">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6">Choose Your Membership Plan</h2>
+                    <p class="text-gray-600 mb-6">Select the plan that best fits your pet's needs and your budget</p>
+                    
+                    <div id="plan-selection" class="space-y-4">
+                        <!-- Plans will be loaded here by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="flex justify-between pt-6 border-t">
+                    <button type="button" id="prev-btn" onclick="previousStep()" class="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors" style="display: none;">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        Previous
+                    </button>
+                    <div class="flex-1"></div>
+                    <button type="button" id="next-btn" onclick="nextStep()" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                        Next
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                    <button type="submit" id="submit-btn" class="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors" style="display: none;">
+                        <i class="fas fa-check mr-2"></i>
+                        Complete Signup
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center text-gray-600">
+                <p>&copy; 2024 PawPlan. All rights reserved. | <a href="privacy.html" class="hover:text-blue-600">Privacy Policy</a> | <a href="terms.html" class="hover:text-blue-600">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 3;
+
+        function showStep(step) {
+            // Hide all steps
+            document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+            
+            // Show current step
+            document.getElementById(`step-${step}`).classList.add('active');
+            
+            // Update progress
+            const progress = (step / totalSteps) * 100;
+            document.getElementById('progress-bar').style.width = `${progress}%`;
+            document.getElementById('current-step').textContent = step;
+            document.getElementById('progress-percent').textContent = Math.round(progress);
+            
+            // Update buttons
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const submitBtn = document.getElementById('submit-btn');
+            
+            prevBtn.style.display = step > 1 ? 'block' : 'none';
+            nextBtn.style.display = step < totalSteps ? 'block' : 'none';
+            submitBtn.style.display = step === totalSteps ? 'block' : 'none';
+        }
+
+        function nextStep() {
+            if (validateCurrentStep()) {
+                currentStep++;
+                showStep(currentStep);
+                
+                // Load plans when reaching step 3
+                if (currentStep === 3) {
+                    loadPlans();
+                }
+            }
+        }
+
+        function previousStep() {
+            currentStep--;
+            showStep(currentStep);
+        }
+
+        function validateCurrentStep() {
+            const currentStepElement = document.getElementById(`step-${currentStep}`);
+            const requiredFields = currentStepElement.querySelectorAll('input[required], select[required]');
+            
+            let isValid = true;
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.classList.add('border-red-500');
+                    isValid = false;
+                } else {
+                    field.classList.remove('border-red-500');
+                }
+            });
+            
+            // Special validation for step 1 (password match)
+            if (currentStep === 1) {
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match!');
+                    return false;
+                }
+            }
+            
+            if (!isValid) {
+                alert('Please fill in all required fields.');
+            }
+            
+            return isValid;
+        }
+
+        function loadPlans() {
+            const container = document.getElementById('plan-selection');
+            const plans = [
+                {
+                    id: 'essential',
+                    name: 'Essential Care',
+                    price: 49,
+                    description: 'Perfect for healthy pets needing basic preventive care',
+                    features: ['Annual Comprehensive Exam', 'Core Vaccinations', 'Flea & Tick Prevention', 'Basic Blood Work', '2 Free Consultations/Year']
+                },
+                {
+                    id: 'premium',
+                    name: 'Premium Wellness',
+                    price: 89,
+                    description: 'Comprehensive care for optimal pet health and longevity',
+                    features: ['Everything in Essential Care', 'Professional Dental Cleaning', 'Advanced Diagnostic Tests', 'Unlimited Consultations', 'Emergency Visit Discount (20%)', 'Nutrition Consultation'],
+                    popular: true
+                },
+                {
+                    id: 'elite',
+                    name: 'Elite Care',
+                    price: 149,
+                    description: 'Ultimate protection and peace of mind for your beloved pets',
+                    features: ['Everything in Premium Wellness', 'Specialist Consultations', 'Advanced Imaging (X-rays, Ultrasound)', 'Surgical Procedures (Up to $2000/year)', '24/7 Telehealth Access', 'Prescription Medications']
+                }
+            ];
+            
+            container.innerHTML = plans.map(plan => `
+                <div class="plan-option border-2 rounded-lg p-6 cursor-pointer transition-all hover:shadow-lg ${plan.popular ? 'border-orange-300 bg-orange-50' : 'border-gray-200 hover:border-blue-300'}" data-plan="${plan.id}">
+                    ${plan.popular ? '<div class="text-center mb-4"><span class="bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold">MOST POPULAR</span></div>' : ''}
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">${plan.name}</h3>
+                            <p class="text-gray-600">${plan.description}</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-blue-600">$${plan.price}</div>
+                            <div class="text-sm text-gray-500">/month</div>
+                        </div>
+                    </div>
+                    <div class="space-y-2 mb-4">
+                        ${plan.features.map(feature => `
+                            <div class="flex items-center text-sm text-gray-700">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                ${feature}
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="text-center">
+                        <input type="radio" name="selectedPlan" value="${plan.id}" class="sr-only">
+                        <div class="w-6 h-6 border-2 border-gray-300 rounded-full mx-auto"></div>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Add click handlers
+            document.querySelectorAll('.plan-option').forEach(option => {
+                option.addEventListener('click', () => {
+                    // Remove selection from all options
+                    document.querySelectorAll('.plan-option').forEach(opt => {
+                        opt.classList.remove('ring-2', 'ring-blue-500');
+                        opt.querySelector('.w-6').classList.remove('bg-blue-600', 'border-blue-600');
+                        opt.querySelector('.w-6').innerHTML = '';
+                    });
+                    
+                    // Add selection to clicked option
+                    option.classList.add('ring-2', 'ring-blue-500');
+                    option.querySelector('.w-6').classList.add('bg-blue-600', 'border-blue-600');
+                    option.querySelector('.w-6').innerHTML = '<div class="w-2 h-2 bg-white rounded-full mx-auto"></div>';
+                    
+                    // Check the radio button
+                    option.querySelector('input[type="radio"]').checked = true;
+                });
+            });
+        }
+
+        // Handle form submission
+        document.getElementById('signup-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Check if plan is selected
+            const selectedPlan = document.querySelector('input[name="selectedPlan"]:checked');
+            if (!selectedPlan) {
+                alert('Please select a membership plan to continue.');
+                return;
+            }
+            
+            // Show success message
+            alert('Account created successfully! Welcome to PawPlan. Redirecting to your dashboard...');
+            
+            // Redirect to dashboard
+            setTimeout(() => {
+                window.location.href = 'client-dashboard.html';
+            }, 2000);
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            showStep(1);
+            
+            // Check for pre-selected plan from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const preSelectedPlan = urlParams.get('plan');
+            if (preSelectedPlan) {
+                // Will be handled when reaching step 3
+                console.log('Pre-selected plan:', preSelectedPlan);
+            }
+        });
+    </script>
+
+    <script src="main.js"></script>
+</body>
+</html>
